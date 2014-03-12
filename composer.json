@@ -16,6 +16,7 @@
 			"app/tests/TestCase.php"
 		],
         "psr-0": {
+            "Yelp": "./app"
         }
 	},
 	"scripts": {

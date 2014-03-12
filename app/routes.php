@@ -17,13 +17,18 @@ Route::get('/', function()
 });
 
 
-/*Route::get('/dvds/search', 'DvdController@search');
-Route::get('/dvds', 'DvdController@listDvds');
-Route::get('/dvds/create', 'DvdController@createDvd');
-Route::post('/dvds', 'DvdController@insertDvd');
+Route::get('/', 'RestaurantController@list_restaurants');
 
+Route::get('restaurants/{id}/reviews', function($id)
+{
+    $restaurant = Restaurant::find($id);
+    $reviews = Reviews::where('restaurant_id', '=', $id);
+    $reviews = $reviews->get();
 
-Route::get('/imdb','ImdbController@imdb');
-Route::get('/imdb/search', 'ImdbController@imdbSearch');*/
+    return View::make('restaurants/review', [
+        'restaurant' => $restaurant,
+        'reviews' => $reviews]);
+});
+
 
 
